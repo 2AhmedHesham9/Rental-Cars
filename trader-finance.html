@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تمويل التاجر - معرض شركة محمد أحمد الزهراني وإخوانه للسيارات</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="index.html" class="nav-logo">معرض الزهراني</a>
+                <div class="nav-links">
+                    <a href="index.html">الرئيسية</a>
+                    <a href="cars.html">السيارات</a>
+                    <a href="car-finance.html">التمويل التقليدي</a>
+                    <a href="trader-finance.html" class="active">تمويل التاجر</a>
+                    <a href="finance.html">حاسبة التمويل</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1 class="page-title">💼 تمويل التاجر</h1>
+            <p class="page-subtitle">حلول مالية مخصصة للتجار والمستثمرين</p>
+        </div>
+    </div>
+
+    <!-- Trader Finance Overview -->
+    <div class="trader-overview-section">
+        <div class="container">
+            <div class="overview-grid">
+                <div class="overview-card">
+                    <h3>📊 إحصائيات التمويل</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-value" id="total-financed">0</div>
+                            <div class="stat-label">إجمالي الممول</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="active-deals">0</div>
+                            <div class="stat-label">الصفقات النشطة</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="monthly-revenue">0</div>
+                            <div class="stat-label">الإيراد الشهري</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="profit-margin">0%</div>
+                            <div class="stat-label">هامش الربح</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="overview-card">
+                    <h3>🎯 أهداف التمويل</h3>
+                    <div class="goals-list">
+                        <div class="goal-item">
+                            <span class="goal-icon">💰</span>
+                            <span class="goal-text">زيادة حجم التمويل بنسبة 25%</span>
+                        </div>
+                        <div class="goal-item">
+                            <span class="goal-icon">📈</span>
+                            <span class="goal-text">تحسين معدل الاسترداد إلى 98%</span>
+                        </div>
+                        <div class="goal-item">
+                            <span class="goal-icon">🚗</span>
+                            <span class="goal-text">تمويل 50 سيارة شهرياً</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trader Deals Management -->
+    <div class="deals-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">إدارة صفقات التمويل</h2>
+                <button class="btn btn-primary" onclick="traderFinanceManager.showAddDealModal()">إضافة صفقة جديدة</button>
+            </div>
+            
+            <div class="deals-table-container">
+                <table class="deals-table" id="deals-table">
+                    <thead>
+                        <tr>
+                            <th>رقم الصفقة</th>
+                            <th>اسم التاجر</th>
+                            <th>نوع السيارة</th>
+                            <th>مبلغ التمويل</th>
+                            <th>المقدم</th>
+                            <th>القسط الشهري</th>
+                            <th>الحالة</th>
+                            <th>تاريخ البدء</th>
+                            <th>الإجراءات</th>
+                        </tr>
+                    </thead>
+                    <tbody id="deals-tbody">
+                        <!-- Deals will be loaded here by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trader Finance Calculator -->
+    <div class="trader-calculator-section">
+        <div class="container">
+            <h2 class="section-title">حاسبة تمويل التاجر</h2>
+            <div class="calculator-form">
+                <form id="trader-calculator-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="trader-name">اسم التاجر:</label>
+                            <input type="text" id="trader-name" name="traderName" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="car-type-trader">نوع السيارة:</label>
+                            <select id="car-type-trader" name="carType" required>
+                                <option value="">اختر نوع السيارة</option>
+                                <option value="luxury">فاخرة</option>
+                                <option value="classic">كلاسيكية</option>
+                                <option value="sport">رياضية</option>
+                                <option value="family">عائلية</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="car-value">قيمة السيارة (ريال):</label>
+                            <input type="number" id="car-value" name="carValue" required min="0" step="1000">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="financing-amount">مبلغ التمويل (ريال):</label>
+                            <input type="number" id="financing-amount" name="financingAmount" required min="0" step="1000">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="trader-rate">معدل التاجر (%):</label>
+                            <input type="number" id="trader-rate" name="traderRate" required min="0" max="100" step="0.1">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="financing-period-trader">فترة التمويل (سنة):</label>
+                            <select id="financing-period-trader" name="financingPeriod" required>
+                                <option value="">اختر فترة التمويل</option>
+                                <option value="1">سنة واحدة</option>
+                                <option value="2">سنتان</option>
+                                <option value="3">3 سنوات</option>
+                                <option value="4">4 سنوات</option>
+                                <option value="5">5 سنوات</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-success">احسب تمويل التاجر</button>
+                </form>
+            </div>
+            
+            <div class="trader-results" id="trader-results" style="display: none;">
+                <h3>نتائج حساب تمويل التاجر</h3>
+                <div class="results-grid" id="trader-results-content">
+                    <!-- Results will be displayed here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add/Edit Deal Modal -->
+    <div id="deal-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="traderFinanceManager.closeModal()">&times;</span>
+            <h2 id="deal-modal-title">إضافة صفقة تمويل جديدة</h2>
+            <form id="deal-form">
+                <div class="form-group">
+                    <label for="deal-trader-name">اسم التاجر:</label>
+                    <input type="text" id="deal-trader-name" name="traderName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="deal-car-type">نوع السيارة:</label>
+                    <select id="deal-car-type" name="carType" required>
+                        <option value="">اختر نوع السيارة</option>
+                        <option value="luxury">فاخرة</option>
+                        <option value="classic">كلاسيكية</option>
+                        <option value="sport">رياضية</option>
+                        <option value="family">عائلية</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="deal-financing-amount">مبلغ التمويل (ريال):</label>
+                    <input type="number" id="deal-financing-amount" name="financingAmount" required min="0" step="1000">
+                </div>
+                
+                <div class="form-group">
+                    <label for="deal-down-payment">المقدم (ريال):</label>
+                    <input type="number" id="deal-down-payment" name="downPayment" required min="0" step="1000">
+                </div>
+                
+                <div class="form-group">
+                    <label for="deal-monthly-payment">القسط الشهري (ريال):</label>
+                    <input type="number" id="deal-monthly-payment" name="monthlyPayment" required min="0" step="100">
+                </div>
+                
+                <div class="form-group">
+                    <label for="deal-status">الحالة:</label>
+                    <select id="deal-status" name="status" required>
+                        <option value="active">نشط</option>
+                        <option value="completed">مكتمل</option>
+                        <option value="defaulted">متأخر</option>
+                        <option value="cancelled">ملغي</option>
+                    </select>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">حفظ الصفقة</button>
+                    <button type="button" class="btn btn-secondary" onclick="traderFinanceManager.closeModal()">إلغاء</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/trader-finance.js"></script>
+</body>
+</html>

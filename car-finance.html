@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام التأجير التقليدي - معرض شركة محمد أحمد الزهراني وإخوانه للسيارات</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="index.html" class="nav-logo">معرض الزهراني</a>
+                <div class="nav-links">
+                    <a href="index.html">الرئيسية</a>
+                    <a href="cars.html">السيارات</a>
+                    <a href="car-finance.html" class="active">التمويل التقليدي</a>
+                    <a href="trader-finance.html">تمويل التاجر</a>
+                    <a href="finance.html">حاسبة التمويل</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1 class="page-title">💳 نظام التأجير التقليدي</h1>
+            <p class="page-subtitle">إدارة قواعد التمويل والأقساط للسيارات</p>
+        </div>
+    </div>
+
+    <!-- Finance Rules Management -->
+    <div class="finance-rules-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">قواعد التمويل</h2>
+                <button class="btn btn-primary" onclick="carFinanceManager.showAddRuleModal()">إضافة قاعدة جديدة</button>
+            </div>
+            
+            <div class="rules-table-container">
+                <table class="rules-table" id="rules-table">
+                    <thead>
+                        <tr>
+                            <th>اسم القاعدة</th>
+                            <th>نوع السيارة</th>
+                            <th>معدل الفائدة</th>
+                            <th>فترة التمويل</th>
+                            <th>الحد الأدنى للمقدم</th>
+                            <th>الحالة</th>
+                            <th>الإجراءات</th>
+                        </tr>
+                    </thead>
+                    <tbody id="rules-tbody">
+                        <!-- Rules will be loaded here by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Finance Calculator -->
+    <div class="finance-calculator-section">
+        <div class="container">
+            <h2 class="section-title">حاسبة الأرباح</h2>
+            <div class="calculator-form">
+                <form id="profit-calculator-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="car-cost">تكلفة السيارة (ريال):</label>
+                            <input type="number" id="car-cost" name="carCost" required min="0" step="1000">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="selling-price">سعر البيع (ريال):</label>
+                            <input type="number" id="selling-price" name="sellingPrice" required min="0" step="1000">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="financing-rule">قاعدة التمويل:</label>
+                            <select id="financing-rule" name="financingRule" required>
+                                <option value="">اختر قاعدة التمويل</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="down-payment-amount">مبلغ المقدم (ريال):</label>
+                            <input type="number" id="down-payment-amount" name="downPaymentAmount" required min="0" step="1000">
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-success">احسب الأرباح</button>
+                </form>
+            </div>
+            
+            <div class="profit-results" id="profit-results" style="display: none;">
+                <h3>نتائج حساب الأرباح</h3>
+                <div class="results-grid" id="profit-results-content">
+                    <!-- Results will be displayed here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add/Edit Rule Modal -->
+    <div id="rule-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="carFinanceManager.closeModal()">&times;</span>
+            <h2 id="modal-title">إضافة قاعدة تمويل جديدة</h2>
+            <form id="rule-form">
+                <div class="form-group">
+                    <label for="rule-name">اسم القاعدة:</label>
+                    <input type="text" id="rule-name" name="ruleName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="car-type">نوع السيارة:</label>
+                    <select id="car-type" name="carType" required>
+                        <option value="">اختر نوع السيارة</option>
+                        <option value="luxury">فاخرة</option>
+                        <option value="classic">كلاسيكية</option>
+                        <option value="sport">رياضية</option>
+                        <option value="family">عائلية</option>
+                        <option value="general">عامة</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="interest-rate">معدل الفائدة السنوي (%):</label>
+                    <input type="number" id="interest-rate" name="interestRate" required min="0" max="100" step="0.1">
+                </div>
+                
+                <div class="form-group">
+                    <label for="max-period">أقصى فترة تمويل (سنة):</label>
+                    <input type="number" id="max-period" name="maxPeriod" required min="1" max="10">
+                </div>
+                
+                <div class="form-group">
+                    <label for="min-down-payment">الحد الأدنى للمقدم (%):</label>
+                    <input type="number" id="min-down-payment" name="minDownPayment" required min="0" max="100" step="1">
+                </div>
+                
+                <div class="form-group">
+                    <label for="rule-status">الحالة:</label>
+                    <select id="rule-status" name="ruleStatus" required>
+                        <option value="active">نشط</option>
+                        <option value="inactive">غير نشط</option>
+                    </select>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">حفظ القاعدة</button>
+                    <button type="button" class="btn btn-secondary" onclick="carFinanceManager.closeModal()">إلغاء</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/car-finance.js"></script>
+</body>
+</html>

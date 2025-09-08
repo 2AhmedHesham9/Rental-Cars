@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حاسبة التمويل - معرض شركة محمد أحمد الزهراني وإخوانه للسيارات</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="index.html" class="nav-logo">معرض الزهراني</a>
+                <div class="nav-links">
+                    <a href="index.html">الرئيسية</a>
+                    <a href="cars.html">السيارات</a>
+                    <a href="car-finance.html">التمويل التقليدي</a>
+                    <a href="trader-finance.html">تمويل التاجر</a>
+                    <a href="finance.html" class="active">حاسبة التمويل</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1 class="page-title">📈 حاسبة التمويل</h1>
+            <p class="page-subtitle">احسب تكلفة تمويل السيارة والأقساط الشهرية</p>
+        </div>
+    </div>
+
+    <!-- Finance Calculator -->
+    <div class="calculator-section">
+        <div class="container">
+            <div class="calculator-container">
+                <div class="calculator-form">
+                    <h2 class="form-title">بيانات التمويل</h2>
+                    
+                    <form id="finance-form">
+                        <div class="form-group">
+                            <label for="car-price">سعر السيارة (ريال):</label>
+                            <input type="number" id="car-price" name="carPrice" required min="0" step="1000" placeholder="مثال: 250000">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="down-payment">المقدم (ريال):</label>
+                            <input type="number" id="down-payment" name="downPayment" required min="0" step="1000" placeholder="مثال: 50000">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="financing-period">فترة التمويل (سنة):</label>
+                            <select id="financing-period" name="financingPeriod" required>
+                                <option value="">اختر فترة التمويل</option>
+                                <option value="1">سنة واحدة</option>
+                                <option value="2">سنتان</option>
+                                <option value="3">3 سنوات</option>
+                                <option value="4">4 سنوات</option>
+                                <option value="5">5 سنوات</option>
+                                <option value="6">6 سنوات</option>
+                                <option value="7">7 سنوات</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="interest-rate">معدل الفائدة السنوي (%):</label>
+                            <input type="number" id="interest-rate" name="interestRate" required min="0" max="100" step="0.1" placeholder="مثال: 5.5">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="insurance-cost">تكلفة التأمين السنوي (ريال):</label>
+                            <input type="number" id="insurance-cost" name="insuranceCost" min="0" step="100" placeholder="مثال: 3000">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="processing-fee">رسوم المعالجة (ريال):</label>
+                            <input type="number" id="processing-fee" name="processingFee" min="0" step="100" placeholder="مثال: 1000">
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-calculate">احسب التمويل</button>
+                        <button type="button" class="btn btn-secondary" onclick="financeCalculator.clearForm()">مسح النموذج</button>
+                    </form>
+                </div>
+                
+                <div class="calculator-results" id="calculator-results" style="display: none;">
+                    <h2 class="results-title">نتائج الحساب</h2>
+                    <div class="results-content" id="results-content">
+                        <!-- Results will be displayed here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Finance Information -->
+    <div class="finance-info-section">
+        <div class="container">
+            <h2 class="section-title">معلومات عن التمويل</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>📋 شروط التمويل</h3>
+                    <ul>
+                        <li>الحد الأدنى للمقدم: 20% من قيمة السيارة</li>
+                        <li>فترة التمويل: من سنة إلى 7 سنوات</li>
+                        <li>معدل الفائدة: يبدأ من 4.5% سنوياً</li>
+                        <li>الحد الأقصى للتمويل: 80% من قيمة السيارة</li>
+                    </ul>
+                </div>
+                
+                <div class="info-card">
+                    <h3>📄 المستندات المطلوبة</h3>
+                    <ul>
+                        <li>هوية الأحوال المدنية</li>
+                        <li>كشف حساب بنكي لآخر 3 أشهر</li>
+                        <li>شهادة الراتب أو إثبات الدخل</li>
+                        <li>تقرير الائتمان من البنك</li>
+                    </ul>
+                </div>
+                
+                <div class="info-card">
+                    <h3>💰 التكاليف الإضافية</h3>
+                    <ul>
+                        <li>رسوم المعالجة: 1,000 ريال</li>
+                        <li>التأمين الشامل: حسب نوع السيارة</li>
+                        <li>رسوم التسجيل: 500 ريال</li>
+                        <li>رسوم التفتيش: 200 ريال</li>
+                    </ul>
+                </div>
+                
+                <div class="info-card">
+                    <h3>⏰ مدة المعالجة</h3>
+                    <ul>
+                        <li>مراجعة الطلب: 1-2 يوم عمل</li>
+                        <li>الموافقة المبدئية: 3-5 أيام عمل</li>
+                        <li>إتمام التمويل: 7-10 أيام عمل</li>
+                        <li>تسليم السيارة: فوري بعد الإتمام</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/finance-calculator.js"></script>
+</body>
+</html>

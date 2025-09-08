@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إضافة سيارة جديدة - معرض شركة محمد أحمد الزهراني وإخوانه للسيارات</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="index.html" class="nav-logo">معرض الزهراني</a>
+                <div class="nav-links">
+                    <a href="index.html">الرئيسية</a>
+                    <a href="cars.html">السيارات</a>
+                    <a href="car-finance.html">التمويل التقليدي</a>
+                    <a href="trader-finance.html">تمويل التاجر</a>
+                    <a href="finance.html">حاسبة التمويل</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1 class="page-title">🚗 إضافة سيارة جديدة</h1>
+            <p class="page-subtitle">أضف سيارة جديدة إلى معرض السيارات</p>
+        </div>
+    </div>
+
+    <!-- Add Car Form -->
+    <div class="add-car-section">
+        <div class="container">
+            <div class="form-container">
+                <form id="add-car-form">
+                    <div class="form-section">
+                        <h3 class="form-section-title">البيانات الأساسية</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="car-make">الماركة:</label>
+                                <input type="text" id="car-make" name="make" required placeholder="مثال: تويوتا">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="car-model">الموديل:</label>
+                                <input type="text" id="car-model" name="model" required placeholder="مثال: كامري">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="car-year">السنة:</label>
+                                <input type="number" id="car-year" name="year" required min="1990" max="2024" placeholder="مثال: 2020">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="car-price">السعر (ريال):</label>
+                                <input type="number" id="car-price" name="price" required min="0" step="1000" placeholder="مثال: 150000">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="car-color">اللون:</label>
+                                <input type="text" id="car-color" name="color" required placeholder="مثال: أبيض">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="car-mileage">الممشى (كم):</label>
+                                <input type="number" id="car-mileage" name="mileage" required min="0" placeholder="مثال: 50000">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3 class="form-section-title">المواصفات التقنية</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fuel-type">نوع الوقود:</label>
+                                <select id="fuel-type" name="fuelType" required>
+                                    <option value="">اختر نوع الوقود</option>
+                                    <option value="بنزين">بنزين</option>
+                                    <option value="ديزل">ديزل</option>
+                                    <option value="هجين">هجين</option>
+                                    <option value="كهربائي">كهربائي</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="transmission">ناقل الحركة:</label>
+                                <select id="transmission" name="transmission" required>
+                                    <option value="">اختر ناقل الحركة</option>
+                                    <option value="أوتوماتيك">أوتوماتيك</option>
+                                    <option value="يدوي">يدوي</option>
+                                    <option value="نصف أوتوماتيك">نصف أوتوماتيك</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="car-type">نوع السيارة:</label>
+                                <select id="car-type" name="carType" required>
+                                    <option value="">اختر نوع السيارة</option>
+                                    <option value="luxury">فاخرة</option>
+                                    <option value="classic">كلاسيكية</option>
+                                    <option value="sport">رياضية</option>
+                                    <option value="family">عائلية</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="engine-size">حجم المحرك:</label>
+                                <input type="text" id="engine-size" name="engineSize" placeholder="مثال: 2.0 لتر">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3 class="form-section-title">الوصف والصور</h3>
+                        
+                        <div class="form-group">
+                            <label for="car-description">وصف السيارة:</label>
+                            <textarea id="car-description" name="description" rows="4" placeholder="اكتب وصفاً مفصلاً للسيارة..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="car-images">صور السيارة:</label>
+                            <input type="file" id="car-images" name="images" multiple accept="image/*">
+                            <div class="file-info">يمكنك اختيار عدة صور للسيارة</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-success">إضافة السيارة</button>
+                        <button type="button" class="btn btn-secondary" onclick="clearForm()">مسح النموذج</button>
+                        <a href="cars.html" class="btn btn-primary">العودة للسيارات</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/cars-data.js"></script>
+    <script src="js/add-car.js"></script>
+</body>
+</html>

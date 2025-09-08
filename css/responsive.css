@@ -1,0 +1,344 @@
+/* Responsive Design */
+
+/* Large screens (1200px and up) */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1400px;
+    }
+    
+    .hero-title {
+        font-size: 3rem;
+    }
+    
+    .section-title {
+        font-size: 2.5rem;
+    }
+}
+
+/* Medium screens (768px to 1199px) */
+@media (max-width: 1199px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .section-title {
+        font-size: 1.75rem;
+    }
+    
+    .finance-card {
+        padding: 24px;
+        font-size: 18px;
+    }
+}
+
+/* Small screens (768px and down) */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 16px;
+    }
+    
+    .hero-section,
+    .finance-section,
+    .about-section {
+        margin: 16px;
+        padding: 40px 20px;
+    }
+    
+    .slider-section,
+    .action-section,
+    .cars-section {
+        margin: 16px;
+    }
+    
+    .hero-title {
+        font-size: 1.75rem;
+        line-height: 1.4;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.125rem;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .section-subtitle {
+        font-size: 1rem;
+    }
+    
+    .hero-buttons,
+    .finance-buttons,
+    .action-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: 300px;
+        padding: 14px 24px;
+        font-size: 16px;
+    }
+    
+    .finance-card {
+        width: 100%;
+        max-width: 400px;
+        padding: 20px;
+        font-size: 16px;
+        flex-direction: column;
+        text-align: center;
+        gap: 8px;
+    }
+    
+    .card-content {
+        text-align: center;
+    }
+    
+    .car-slider {
+        padding: 20px;
+        min-height: 280px;
+    }
+    
+    .slider-img {
+        height: 250px;
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .feature-card {
+        padding: 20px;
+    }
+    
+    .cars-table-container {
+        font-size: 14px;
+    }
+    
+    .cars-table th,
+    .cars-table td {
+        padding: 12px 8px;
+    }
+    
+    .purchase-btn {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+}
+
+/* Extra small screens (480px and down) */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 12px;
+    }
+    
+    .hero-section,
+    .finance-section,
+    .about-section {
+        margin: 12px;
+        padding: 30px 16px;
+    }
+    
+    .slider-section,
+    .action-section,
+    .cars-section {
+        margin: 12px;
+    }
+    
+    .hero-title {
+        font-size: 1.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .section-title {
+        font-size: 1.25rem;
+    }
+    
+    .section-subtitle {
+        font-size: 0.9rem;
+    }
+    
+    .btn {
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+    
+    .finance-card {
+        padding: 16px;
+        font-size: 14px;
+    }
+    
+    .card-icon {
+        font-size: 1.5rem;
+    }
+    
+    .car-slider {
+        padding: 16px;
+        min-height: 250px;
+    }
+    
+    .slider-img {
+        height: 200px;
+    }
+    
+    .slider-dots {
+        bottom: 12px;
+    }
+    
+    .dot {
+        width: 10px;
+        height: 10px;
+    }
+    
+    .feature-card {
+        padding: 16px;
+    }
+    
+    .feature-card h3 {
+        font-size: 1.125rem;
+    }
+    
+    .feature-card p {
+        font-size: 0.9rem;
+    }
+    
+    .cars-table {
+        min-width: 600px;
+    }
+    
+    .cars-table th,
+    .cars-table td {
+        padding: 8px 6px;
+        font-size: 12px;
+    }
+    
+    .purchase-btn {
+        padding: 4px 8px;
+        font-size: 11px;
+    }
+    
+    .marquee-content {
+        font-size: 16px;
+    }
+}
+
+/* Landscape orientation for mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+    .hero-section {
+        padding: 30px 20px;
+    }
+    
+    .car-slider {
+        min-height: 200px;
+    }
+    
+    .slider-img {
+        height: 180px;
+    }
+    
+    .finance-section {
+        padding: 40px 20px;
+    }
+}
+
+/* Print styles */
+@media print {
+    .marquee-container,
+    .hero-buttons,
+    .finance-buttons,
+    .action-buttons,
+    .purchase-btn {
+        display: none;
+    }
+    
+    .hero-section,
+    .finance-section,
+    .about-section {
+        box-shadow: none;
+        border: 1px solid #ccc;
+    }
+    
+    .cars-table {
+        border: 1px solid #000;
+    }
+    
+    .cars-table th,
+    .cars-table td {
+        border: 1px solid #000;
+    }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    .btn {
+        border: 2px solid currentColor;
+    }
+    
+    .finance-card {
+        border: 2px solid white;
+    }
+    
+    .feature-card {
+        border: 1px solid #000;
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .marquee-content {
+        animation: none;
+    }
+    
+    .slider-img,
+    .finance-card,
+    .btn {
+        transition: none;
+    }
+    
+    .finance-card:hover {
+        transform: none;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+        color: #f9fafb;
+    }
+    
+    .hero-section {
+        background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+    }
+    
+    .car-slider {
+        background: linear-gradient(135deg, #064e3b 0%, #065f46 100%);
+    }
+    
+    .finance-section {
+        background: linear-gradient(135deg, #581c87 0%, #6b21a8 100%);
+    }
+    
+    .about-section {
+        background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+    }
+    
+    .cars-table-container,
+    .feature-card {
+        background: #374151;
+        color: #f9fafb;
+    }
+    
+    .cars-table th {
+        background: #4b5563;
+    }
+    
+    .cars-table tr:hover {
+        background: #4b5563;
+    }
+}

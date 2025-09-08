@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معرض شركة محمد أحمد الزهراني وإخوانه للسيارات</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="index.html" class="nav-logo">معرض الزهراني</a>
+                <div class="nav-links">
+                    <a href="index.html" class="active">الرئيسية</a>
+                    <a href="cars.html">السيارات</a>
+                    <a href="car-finance.html">التمويل التقليدي</a>
+                    <a href="trader-finance.html">تمويل التاجر</a>
+                    <a href="finance.html">حاسبة التمويل</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- الشريط المتحرك أعلى الصفحة -->
+    <div class="marquee-container">
+        <div class="marquee-content">
+            انتظرونا قريباً
+            <span class="marquee-spacer"></span>
+            هذه الواجهة مخصصة للتجار والمستثمرين، أما منصة المزاد فتذهب إليها عبر الضغط على زر المنصة الأم
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="container">
+            <h1 class="hero-title">
+                أهلاً بكم في معرض شركة محمد أحمد الزهراني وإخوانه للسيارات
+            </h1>
+            <p class="hero-subtitle">
+                نقل ملكية، بيع سيارات مستعملة، ونظام التأجير
+            </p>
+            <div class="hero-buttons">
+                <a href="https://dasm.com.sa/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                    المنصة الأم
+                </a>
+                <a href="cars.html" class="btn btn-secondary">
+                    تصفح سيارات المعرض
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Car Image Slider -->
+    <div class="slider-section">
+        <div class="container">
+            <div class="car-slider">
+                <div class="slider-container">
+                    <img id="slider-image" src="images/slider/photo-1552519507-da3b142c6e3d.webp" alt="صورة سيارة" class="slider-img">
+                    <div class="slider-dots" id="slider-dots"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Finance Management Section -->
+    <div class="finance-section">
+        <div class="container">
+            <h2 class="section-title">
+                🎯 إدارة قواعد التمويل والأقساط
+            </h2>
+            <p class="section-subtitle">
+                أضف قواعد التمويل الجديدة، عدّل النسب، واحسب الأرباح المتوقعة
+            </p>
+            <div class="finance-buttons">
+                <a href="car-finance.html" class="finance-card">
+                    <span class="card-icon">💳</span>
+                    <div class="card-content">
+                        <div class="card-title">نظام التأجير التقليدي</div>
+                        <div class="card-subtitle">Classic Car Leasing System</div>
+                    </div>
+                </a>
+                <a href="trader-finance.html" class="finance-card">
+                    <span class="card-icon">💼</span>
+                    <div class="card-content">
+                        <div class="card-title">تمويل التاجر</div>
+                        <div class="card-subtitle">Trader Finance</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="action-section">
+        <div class="container">
+            <div class="action-buttons">
+                <a href="cars-new.html" class="btn btn-success">
+                    🚗 إضافة سيارة
+                </a>
+                <a href="finance.html" class="btn btn-success">
+                    📈 احسب التمويل الآن
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Available Cars Section -->
+    <div class="cars-section">
+        <div class="container">
+            <h2 class="section-title">🚗 السيارات المتاحة للشراء</h2>
+            <div class="cars-table-container">
+                <table class="cars-table" id="cars-table">
+                    <thead>
+                        <tr>
+                            <th>الماركة</th>
+                            <th>الموديل</th>
+                            <th>السنة</th>
+                            <th>السعر</th>
+                            <th>اللون</th>
+                            <th>الممشى</th>
+                            <th>ناقل الحركة</th>
+                            <th>نوع الوقود</th>
+                            <th>الإجراءات</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cars-tbody">
+                        <!-- Cars will be loaded here by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <div class="about-section">
+        <div class="container">
+            <h2 class="section-title">عن منصتنا</h2>
+            <p class="about-description">
+                منصة رائدة في تمويل السيارات وخدمات التأجير المنتهي بالتمليك، 
+                توفر حلولاً مالية مبتكرة لجميع احتياجاتك
+            </p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>التمويل التقليدي</h3>
+                    <p>نظام التأجير مع حسابات متقدمة</p>
+                </div>
+                <div class="feature-card">
+                    <h3>تمويل التاجر</h3>
+                    <p>حلول مالية مخصصة للتجار والمستثمرين</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/car-slider.js"></script>
+    <script src="js/cars-data.js"></script>
+</body>
+</html>
