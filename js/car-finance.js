@@ -29,7 +29,7 @@ class CarFinanceManager {
                     interestRate: 4.5,
                     maxPeriod: 5,
                     minDownPayment: 25,
-                    status: 'active',
+                    amountOfLastPayment: 20,
                     createdAt: new Date().toISOString()
                 },
                 {
@@ -39,7 +39,7 @@ class CarFinanceManager {
                     interestRate: 5.0,
                     maxPeriod: 7,
                     minDownPayment: 30,
-                    status: 'active',
+                    amountOfLastPayment:20,
                     createdAt: new Date().toISOString()
                 },
                 {
@@ -49,7 +49,7 @@ class CarFinanceManager {
                     interestRate: 5.5,
                     maxPeriod: 4,
                     minDownPayment: 20,
-                    status: 'active',
+                amountOfLastPayment:20,
                     createdAt: new Date().toISOString()
                 },
                 {
@@ -59,6 +59,7 @@ class CarFinanceManager {
                     interestRate: 4.0,
                     maxPeriod: 6,
                     minDownPayment: 20,
+                    amountOfLastPayment: 20,
                     status: 'active',
                     createdAt: new Date().toISOString()
                 }
@@ -109,19 +110,20 @@ class CarFinanceManager {
             tbody.innerHTML = '<tr><td colspan="7" class="text-center">لا توجد قواعد تمويل</td></tr>';
             return;
         }
-        
+            //   <td>
+            //         <span class="status-badge ${rule.status}">
+            //             ${rule.status === 'active' ? 'نشط' : 'غير نشط'}
+            //         </span>
+            //     </td> 
         tbody.innerHTML = this.financeRules.map(rule => `
             <tr>
                 <td>${rule.name}</td>
                 <td>${this.getCarTypeName(rule.carType)}</td>
                 <td>${rule.interestRate}%</td>
-                <td>${rule.maxPeriod} سنوات</td>
+                <td>${rule.maxPeriod} شهور</td>
                 <td>${rule.minDownPayment}%</td>
-                <td>
-                    <span class="status-badge ${rule.status}">
-                        ${rule.status === 'active' ? 'نشط' : 'غير نشط'}
-                    </span>
-                </td>
+                <td>${rule.amountOfLastPayment}%</td>
+         
                 <td>
                     <button class="btn-edit" onclick="carFinanceManager.editRule('${rule.id}')">تعديل</button>
                     <button class="btn-delete" onclick="carFinanceManager.deleteRule('${rule.id}')">حذف</button>
@@ -146,7 +148,7 @@ class CarFinanceManager {
         if (!select) return;
         
         select.innerHTML = '<option value="">اختر قاعدة التمويل</option>' +
-            this.financeRules.filter(rule => rule.status === 'active')
+            this.financeRules
                 .map(rule => `<option value="${rule.id}">${rule.name}</option>`)
                 .join('');
     }
@@ -171,7 +173,8 @@ class CarFinanceManager {
         document.getElementById('interest-rate').value = rule.interestRate;
         document.getElementById('max-period').value = rule.maxPeriod;
         document.getElementById('min-down-payment').value = rule.minDownPayment;
-        document.getElementById('rule-status').value = rule.status;
+        document.getElementById('amount-of-last-payment').value = rule.amountOfLastPayment;
+        // document.getElementById('rule-status').value = rule. status;
         
         document.getElementById('rule-modal').style.display = 'block';
     }
@@ -185,6 +188,7 @@ class CarFinanceManager {
             interestRate: parseFloat(formData.get('interestRate')),
             maxPeriod: parseInt(formData.get('maxPeriod')),
             minDownPayment: parseInt(formData.get('minDownPayment')),
+            amountOfLastPayment: parseInt(formData.get('amountOfLastPayment')),
             status: formData.get('ruleStatus')
         };
         
