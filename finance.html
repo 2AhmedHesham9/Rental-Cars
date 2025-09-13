@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <!-- Navigation -->
     <nav class="navbar">
@@ -41,52 +43,65 @@
             <div class="calculator-container">
                 <div class="calculator-form">
                     <h2 class="form-title">بيانات التمويل</h2>
-                    
+
                     <form id="finance-form">
                         <div class="form-group">
                             <label for="car-price">سعر السيارة (ريال):</label>
-                            <input type="number" id="car-price" name="carPrice" required min="0" step="1000" placeholder="مثال: 250000">
+                            <input type="number" id="car-price" name="carPrice" required min="0" step="1000"
+                                placeholder="مثال: 250000">
                         </div>
-                        
+
                         <div class="form-group">
-                            <label for="down-payment">المقدم (ريال):</label>
-                            <input type="number" id="down-payment" name="downPayment" required min="0" step="1000" placeholder="مثال: 50000">
+                            <label for="down-payment">الدفعه الاولى (%):</label>
+                            <select id="down-payment" name="downPayment" required>
+                                <!-- <option value="">اختر فترة التمويل</option> -->
+                                <option value="10">10</option>
+                                <option value="15">15</option>
+                                <option value="20">20</option>
+                                <option value="25">25</option>
+                                <option value="30">30</option>
+
+                            </select>
+                            <!-- <input type="number" id="down-payment" name="downPayment" required min="0" step="1000" placeholder="مثال: 50000"> -->
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="financing-period">فترة التمويل (سنة):</label>
                             <select id="financing-period" name="financingPeriod" required>
                                 <option value="">اختر فترة التمويل</option>
-                                <option value="1">سنة واحدة</option>
-                                <option value="2">سنتان</option>
-                                <option value="3">3 سنوات</option>
-                                <option value="4">4 سنوات</option>
-                                <option value="5">5 سنوات</option>
-                                <option value="6">6 سنوات</option>
-                                <option value="7">7 سنوات</option>
+                                <option value="12">12 </option>
+                                <option value="18">18</option>
+                                <option value="24">24</option>
+                                <option value="36">36 </option>
+                                <option value="42">42 </option>
+
                             </select>
                         </div>
-                        
+
                         <div class="form-group">
-                            <label for="interest-rate">معدل الفائدة السنوي (%):</label>
-                            <input type="number" id="interest-rate" name="interestRate" required min="0" max="100" step="0.1" placeholder="مثال: 5.5">
+                            <label for="interest-rate">معدل المرابحه السنوي (%):</label>
+                            <input type="number" id="interest-rate" name="interestRate" required min="0" max="100"
+                                step="0.1" placeholder="مثال: 5.5">
                         </div>
-                        
+
                         <div class="form-group">
-                            <label for="insurance-cost">تكلفة التأمين السنوي (ريال):</label>
-                            <input type="number" id="insurance-cost" name="insuranceCost" min="0" step="100" placeholder="مثال: 3000">
+                            <label for="insurance-cost">تكلفة التأمين الشهري (ريال):</label>
+                            <input type="number" id="insurance-cost" name="insuranceCost" min="0" step="100"
+                                placeholder="مثال: 3000">
                         </div>
-                        
+
                         <div class="form-group">
-                            <label for="processing-fee">رسوم المعالجة (ريال):</label>
-                            <input type="number" id="processing-fee" name="processingFee" min="0" step="100" placeholder="مثال: 1000">
+                            <label for="processing-fee">تكلفه التتبع شهريا (ريال):</label>
+                            <input type="number" id="processing-fee" name="processingFee" min="0" step="100"
+                                placeholder="مثال: 1000">
                         </div>
-                        
+
                         <button type="submit" class="btn btn-primary btn-calculate">احسب التمويل</button>
-                        <button type="button" class="btn btn-secondary" onclick="financeCalculator.clearForm()">مسح النموذج</button>
+                        <button type="button" class="btn btn-secondary" onclick="financeCalculator.clearForm()">مسح
+                            النموذج</button>
                     </form>
                 </div>
-                
+
                 <div class="calculator-results" id="calculator-results" style="display: none;">
                     <h2 class="results-title">نتائج الحساب</h2>
                     <div class="results-content" id="results-content">
@@ -111,7 +126,7 @@
                         <li>الحد الأقصى للتمويل: 80% من قيمة السيارة</li>
                     </ul>
                 </div>
-                
+
                 <div class="info-card">
                     <h3>📄 المستندات المطلوبة</h3>
                     <ul>
@@ -121,7 +136,7 @@
                         <li>تقرير الائتمان من البنك</li>
                     </ul>
                 </div>
-                
+
                 <div class="info-card">
                     <h3>💰 التكاليف الإضافية</h3>
                     <ul>
@@ -131,7 +146,7 @@
                         <li>رسوم التفتيش: 200 ريال</li>
                     </ul>
                 </div>
-                
+
                 <div class="info-card">
                     <h3>⏰ مدة المعالجة</h3>
                     <ul>
@@ -148,4 +163,5 @@
     <script src="js/main.js"></script>
     <script src="js/finance-calculator.js"></script>
 </body>
+
 </html>

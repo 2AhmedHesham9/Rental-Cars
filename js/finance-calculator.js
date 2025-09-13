@@ -64,7 +64,7 @@ class FinanceCalculator {
             return;
         }
         
-        if (data.downPayment < data.carPrice * 0.2) {
+        if (data.downPayment*data.carPrice < data.carPrice * 0.2) {
             alert('الحد الأدنى للمقدم هو 20% من قيمة السيارة');
             return;
         }
@@ -74,29 +74,35 @@ class FinanceCalculator {
     }
     
     performCalculations(data) {
-        const financedAmount = data.carPrice - data.downPayment;
+        const financedAmount = data.carPrice - (data.downPayment/100)*(data.carPrice);
         const monthlyInterestRate = data.interestRate / 100 / 12;
-        const numberOfPayments = data.financingPeriod * 12;
-        
+        const numberOfPayments = data.financingPeriod ;
+      const profit = (financedAmount * (data.interestRate / 100));  
         // Calculate monthly payment using the loan payment formula
-        let monthlyPayment;
-        if (monthlyInterestRate === 0) {
-            // If no interest, just divide the principal by number of payments
-            monthlyPayment = financedAmount / numberOfPayments;
-        } else {
-            // Standard loan payment formula
-            monthlyPayment = financedAmount * 
-                (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, numberOfPayments)) /
-                (Math.pow(1 + monthlyInterestRate, numberOfPayments) - 1);
-        }
+        let monthlyPayment=((financedAmount+profit)/numberOfPayments) ;
+        // if (monthlyInterestRate === 0) {
+        //     // If no interest, just divide the principal by number of payments
+        //     monthlyPayment = financedAmount / numberOfPayments;
+        // } else {
+        //     // Standard loan payment formula
+        //     // monthlyPayment = profit / numberOfPayments; 
+        //     monthlyPayment = financedAmount * 
+        //         (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, numberOfPayments)) /
+        //         (Math.pow(1 + monthlyInterestRate, numberOfPayments) - 1);
+                
+        // }
         
-        const totalPayments = monthlyPayment * numberOfPayments;
-        const totalInterest = totalPayments - financedAmount;
-        const totalCost = data.carPrice + totalInterest + data.insuranceCost * data.financingPeriod + data.processingFee;
+        const totalPayments = monthlyPayment * numberOfPayments;  
+        const totalInterest = totalPayments - financedAmount;   
+        // const totalCost = data.carPrice + totalInterest + data.insuranceCost * data.financingPeriod + data.processingFee;
+        const totalCost = data.carPrice + profit + data.insuranceCost * data.financingPeriod + data.processingFee* data.financingPeriod;
+        const totalCostWithoutProfit = financedAmount + profit + data.insuranceCost * data.financingPeriod + data.processingFee* data.financingPeriod;
         
         // Calculate insurance monthly cost
-        const monthlyInsurance = data.insuranceCost / 12;
-        const totalMonthlyPayment = monthlyPayment + monthlyInsurance;
+        const monthlyInsurance = data.insuranceCost ;
+        const monthlyprocessingFee = data.processingFee ;
+        // const totalMonthlyPayment = monthlyPayment + monthlyInsurance;
+        const totalMonthlyPayment = (monthlyPayment + monthlyInsurance+monthlyprocessingFee).toFixed(2);
         
         return {
             financedAmount: financedAmount,
@@ -105,9 +111,12 @@ class FinanceCalculator {
             totalMonthlyPayment: totalMonthlyPayment,
             totalPayments: totalPayments,
             totalInterest: totalInterest,
+            profit: profit,
             totalCost: totalCost,
-            downPaymentPercentage: (data.downPayment / data.carPrice) * 100,
-            interestPercentage: (totalInterest / financedAmount) * 100
+            totalCostWithoutProfit:totalCostWithoutProfit,
+            downPaymentPercentage: (data.downPayment*data.carPrice / data.carPrice) ,
+            interestPercentage: (profit / financedAmount) * 100
+            // interestPercentage: (totalInterest / financedAmount) * 100
         };
     }
     
@@ -134,7 +143,7 @@ class FinanceCalculator {
                 
                 <div class="result-item">
                     <div class="result-label">إجمالي الفوائد</div>
-                    <div class="result-value">${results.totalInterest.toLocaleString('ar-SA')} ريال</div>
+                    <div class="result-value">${results.profit.toLocaleString('ar-SA')} ريال</div>
                 </div>
                 
                 <div class="result-item">
@@ -151,8 +160,8 @@ class FinanceCalculator {
             <div class="results-summary">
                 <h3>ملخص التمويل</h3>
                 <p>ستدفع <strong>${results.totalMonthlyPayment.toLocaleString('ar-SA', {maximumFractionDigits: 0})} ريال</strong> شهرياً لمدة <strong>${document.getElementById('financing-period').value} سنوات</strong></p>
-                <p>إجمالي الفوائد: <strong>${results.totalInterest.toLocaleString('ar-SA')} ريال</strong></p>
-                <p>التكلفة الإجمالية للسيارة: <strong>${results.totalCost.toLocaleString('ar-SA')} ريال</strong></p>
+                <p>إجمالي الفوائد: <strong>${results.profit.toLocaleString('ar-SA')} ريال</strong></p>
+                <p>التكلفة الإجمالية للسيارة (بعد الدفعه الاولى): <strong>${results.totalCostWithoutProfit.toLocaleString('ar-SA')} ريال</strong></p>
             </div>
             
             <div class="results-actions">
